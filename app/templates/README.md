@@ -11,6 +11,8 @@ This is a Flask, Python based application. So I recommend using virtualenv.
 
 > ` > pip install -t lib -r requirements.txt`
 
+Also, the project name that is in the \*-file.yaml files will need to be edited to reflect your Google Cloud Platform project name.
+
 The commands to follow along with the webinar are:
 
 ~~~~
