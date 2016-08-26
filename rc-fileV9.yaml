@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: webinar-flask-rc-v9
+spec:
+  replicas: 3
+  selector:
+    name: webinar-flask
+    version: v9
+  # Our Pod template
+  template:
+    metadata:
+      labels:
+        name: webinar-flask
+        version: v9
+    spec:
+      containers:
+        - name: db
+          image: redis
+          ports:
+            - containerPort: 6379
+        - name: web
+          image: gcr.io/ca-webinar/webinar-flask:v9
+          ports:
+            - containerPort: 5000

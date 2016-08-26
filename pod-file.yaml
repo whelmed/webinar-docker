@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webinar-flask
+  labels:
+    name: webinar-flask
+spec:
+  containers:
+    - name: db
+      image: redis
+      ports:
+        - containerPort: 6379
+    - name: web
+      image: gcr.io/ca-webinar/webinar-flask:v7
+      ports:
+        - containerPort: 5000

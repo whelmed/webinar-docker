@@ -1,0 +1,20 @@
+# The file format version
+version: '2'
+# The services we want to create
+services:
+  # A DB Service, using the redis image from the Docker repo
+  db:
+    image: redis
+    # expose the default redis port.
+    ports:
+        - "6379"
+  # A service for the web application
+  web:
+    build: . # Run the build against the dockerfile in the current dir
+    command: app.py # The command that'll be run.
+    volumes:
+      - ./app:/app # Folder mapping
+    ports:
+      - "5000:5000" # Port mapping
+    depends_on:
+      - db # Ensures the DB services is running¡.

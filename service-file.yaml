@@ -1,0 +1,16 @@
+# Create a service to load balance our pods.
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: webinar-service
+  name: webinar-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 5000
+      protocol: TCP
+  # Label keys and values that must match in order to receive traffic for this service.
+  selector:
+    name: webinar-flask
